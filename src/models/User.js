@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
-  emil: {
+  email: {
     type: String,
     unique: true,
     required: true,
@@ -28,7 +28,7 @@ userSchema.pre("save", function (next) {
         return next(err);
       }
       user.password = hash;
-      next();
+      return next();
     });
   });
 });

@@ -14,7 +14,7 @@ app.use(authRoutes);
 app.use(trackRoutes);
 
 const mongoUri =
-  "mongodb+srv://student:passwordpassword@cluster0.fv2oj.mongodb.net/<dbname>?retryWrites=true&w=majority";
+  "mongodb+srv://student:passwordpassword@cluster0.fv2oj.mongodb.net/users?retryWrites=true&w=majority";
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -30,7 +30,7 @@ mongoose.connection.on("error", (err) => {
 });
 
 app.get("/", requireAuth, (req, res) => {
-  res.send(`your email is : ${req.user.emil}`);
+  res.send(`your email is : ${req.user.email}`);
 });
 
 app.listen(3000, () => {
